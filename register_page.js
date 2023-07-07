@@ -1,11 +1,10 @@
 export class RegisterPage {
     constructor() {
         this.url = "https://www.automationteststore.com/";
-        this.registerButton = '#customer_menu_top > li > a';
+        this.registerButton = '#customer_menu_top';
         this.continueButton = '#accountFrm > fieldset > .btn';
         this.firstNameInput = '#AccountFrm_firstname';
         this.lastNameInput = '#AccountFrm_lastname';
-        this.emailInput = '#AccountFrm_email';
         this.telephoneInput = '#AccountFrm_telephone';
         this.addressInput = '#AccountFrm_address_1';
         this.address2Input = '#AccountFrm_address_2';
@@ -16,8 +15,10 @@ export class RegisterPage {
         this.loginnameInput = '#AccountFrm_loginname';
         this.passwordInput = '#AccountFrm_password';
         this.password2Input = '#AccountFrm_confirm';
+        this.subscribeInput = 'input[name="newsletter"]';
         this.privacyInput = '#AccountFrm_agree';
-        this.submitButton = '.col-md-2 > .btn';
+        this.pokracovatButton = 'button[title="Continue"]';
+        this.errorMessage = '.alert';
     }
 
     openAutomationTestStore() {
@@ -35,78 +36,82 @@ export class RegisterPage {
         return this;
     }
 
-    typeFirstname(firstName) {
-        cy.get(this.firstNameInput).type(firstName);
+    typeFirstname() {
+        cy.get(this.firstNameInput).type("Ivana");
         return this;
     }
 
-    typeLastname(lastName) {
-        cy.get(this.lastNameInput).type(lastName);
+    typeLastname() {
+        cy.get(this.lastNameInput).type("Maříková");
         return this;
     }
 
-    typeEmail(email) {
-        cy.get(this.emailInput).type(email);
+    typeTelephone() {
+        cy.get(this.telephoneInput).type("776274584");
         return this;
     }
 
-    typeTelephone(telephone) {
-        cy.get(this.telephoneInput).type(telephone);
+    typeAddress() {
+        cy.get(this.addressInput).type("Zelená 1");
         return this;
     }
 
-    typeAddress(address) {
-        cy.get(this.addressInput).type(address);
+    typeAddress2() {
+        cy.get(this.address2Input).type("Zelená 2");
         return this;
     }
 
-    typeAddress2(address2) {
-        cy.get(this.address2Input).type(address2);
+    typeCity() {
+        cy.get(this.cityInput).type("Brno");
         return this;
     }
 
-    typeCity(city) {
-        cy.get(this.cityInput).type(city);
+    selectRegion() {
+        cy.get(this.regionInput).select("Vysocina");
         return this;
     }
 
-    selectRegion(region) {
-        cy.get(this.regionInput).select(region);
+    typePostcode() {
+        cy.get(this.postcodeInput).type("63800");
         return this;
     }
 
-    typePostcode(postcode) {
-        cy.get(this.postcodeInput).type(postcode);
+    selectCountry(country) {
+        cy.get(this.countryInput).select("Czech Republic");
         return this;
     }
 
-    typeCountry(country) {
-        cy.get(this.countryInput).type(country);
+    typeLoginname() {
+        cy.get(this.loginnameInput).type("marikova.ivana");
         return this;
     }
 
-    typeLoginname(loginName) {
-        cy.get(this.loginnameInput).type(loginName);
+    typePassword() {
+        cy.get(this.passwordInput).type("1234");
         return this;
     }
 
-    typePassword(password) {
-        cy.get(this.passwordInput).type(password);
-        return this;
-    }
-
-    typePassword2(password2) {
-        cy.get(this.password2Input).type(password2);
+    typePassword2() {
+        cy.get(this.password2Input).type("1234");
         return this;
     }
 
     submitPrivacy() {
-        cy.get(this.privacyInput).click();
+        cy.get(this.privacyInput).check();
         return this;
     }
 
-    clickSubmitButton() {
-        cy.get(this.submitButton).click();
+    checkSubscribe() {
+        cy.get(this.subscribeInput).check("0");
         return this;
+    }
+
+    clickPokracovatButton() {
+        cy.get(this.pokracovatButton).click();
+        return this;
+    }
+
+    getErrorMessage() {
+        return cy.get(this.errorMessage);
     }
 }
