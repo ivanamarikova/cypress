@@ -1,6 +1,6 @@
 export class AddProjectPage {
     constructor() {
-        this.Name = "#fields_158";
+        this.Name = "div[data-testid="Name"] input"
         this.saveButton = '.modal-footer > .btn-primary'
         this.clickProfile = '.username'
         this.clickLogout = "#logout"
