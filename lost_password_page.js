@@ -1,3 +1,5 @@
+import { LoginPage } from "./login_page";
+
 export class LostPasswordPage {
     constructor() {
         this.usernameInput = ':nth-child(2) > .input-icon > .form-control';
@@ -34,7 +36,6 @@ export class LostPasswordPage {
 
     clickBackButton() {
         cy.get(this.backButton).click();
-        return this;
+        return new LoginPage();
     }
-
 }
