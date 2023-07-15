@@ -1,28 +1,28 @@
 export class AddProjectPage {
     constructor() {
-        this.Name = "div[data-testid="Name"] input"
-        this.saveButton = '.modal-footer > .btn-primary'
-        this.clickProfile = '.username'
-        this.clickLogout = "#logout"
+        this.projectNameInput = 'div[data-testid="Name"] input';
+        this.saveButton = '.modal-footer > .btn-primary';
+        this.clickProfile = '.username';
+        this.clickLogout = '#logout';
     }
-    typeName(name) {
-        cy.get(this.Name).type("Ivana");
+
+    typeProjectName(project) {
+        cy.get(this.projectNameInput).type(project);
         return this;
     }
 
-    clicksaveButton() {
+    clickSaveButton() {
         cy.get(this.saveButton).click();
         return this;
     }
 
-    Profile() {
+    clickProfileLink() {
         cy.get(this.clickProfile).click();
         return this;
     }
 
-    Logout() {
+    clickLogoutButton() {
         cy.get(this.clickLogout).click();
         return this;
     }
-
 }
