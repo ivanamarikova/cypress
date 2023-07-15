@@ -1,3 +1,5 @@
+import { LoginPage } from "./login_page";
+
 export class AddProjectPage {
     constructor() {
         this.projectNameInput = 'div[data-testid="Name"] input';
@@ -23,6 +25,6 @@ export class AddProjectPage {
 
     clickLogoutButton() {
         cy.get(this.clickLogout).click();
-        return this;
+        return LoginPage;
     }
 }
