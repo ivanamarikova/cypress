@@ -1,15 +1,10 @@
-export class HomePage {
+import { HeaderSection } from "./header_sections";
+export class HomePage extends HeaderSection {
     constructor() {
-        this.url = 'http://tredgate.com/eshop/';
-        this.registerButton = 'Register';
-    }
-
-    visit() {
-        cy.visit(this.url);
-    }
-
-    openRegistration() {
-        cy.contains(this.registerButton).click({ force: true });
+        super("module=dashboard/dashboard");
+        this.projectsMenuAnchor = "#Projects a";
+        this.welcomePageHeader = "#welcome-page-header";
+        cy.get(this.welcomePageHeader).should("be.visible");
     }
 }
 
