@@ -1,3 +1,5 @@
+import { AddProjectPage } from "./add_project_page";
+
 export class ProjectsPage {
     constructor() {
         this.projectPageUrl = "http://tredgate.com/pmtool/index.php?module=items/items&path=21";
@@ -10,7 +12,7 @@ export class ProjectsPage {
 
     clickaddProjectButton() {
         cy.get(this.addProjectButton).click();
-        return this;
+        return AddProjectPage;
     }
 
 }
