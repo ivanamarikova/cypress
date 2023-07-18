@@ -10,6 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cypress": "^12.13.0"
+    "@cypress/xpath": "^2.0.3",
+    "cypress": "^12.13.0",
+    "moment": "^2.29.4"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.0.2"
   }
 }
