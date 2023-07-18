@@ -9,6 +9,7 @@ export class LoginPage {
         this.pageHeader = "h3.form-title";
         this.alertDiv = ".alert-danger";
         this.logoImg = "img";
+        this.projectsAnchor = "#Projects>a";
     }
 
     passwordIsVisible() {
@@ -57,18 +58,23 @@ export class LoginPage {
     }
 
     typeUsername(username) {
-        cy.get(this.usernameInput).type(username);
+        cy.get(this.usernameInput).type("fifka_petr");
         return this;
     }
 
     typePassword(password) {
-        cy.get(this.passwordInput).type(password);
+        cy.get(this.passwordInput).type("Tredgate2023");
         return this;
     }
 
     clickLoginButton() {
         cy.get(this.loginButton).click();
         return this;
+    }
+    clickProjects() {
+        const { ProjectsPage } = require("./projects_page");
+        cy.get(this.projectsAnchor).click();
+        return new ProjectsPage();
     }
 
     login(username, password) {
