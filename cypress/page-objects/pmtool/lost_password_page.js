@@ -1,26 +1,26 @@
+
 import { LoginPage } from "./login_page";
 
-export class LostPasswordPage {
+export class LostPasswordPage extends LoginPage {
     constructor() {
-        this.usernameInput = ':nth-child(2) > .input-icon > .form-control';
-        this.emailInput = ':nth-child(3) > .input-icon > .form-control';
+        super();
+        this.url = "http://tredgate.com/pmtool/index.php?module=users/restore_password"
+        this.usernameInput = "//input[@placeholder='Username']";
+        this.emailInput = "//input[@placeholder='Email']";
         this.sendButton = '.btn-info';
         this.backForget = '#forget_password';
-        this.backButton = '#back-btn > .fa';
-    }
-
-    visit() {
-        cy.visit('http://tredgate.com/pmtool/index.php?module=users/restore_password');
-        return this;
+        this.backButton = '#back-btn';
+        this.logo = "img";
+        this.title = '.form-title';
     }
 
     fillUsername(username) {
-        cy.get(this.usernameInput).type(username);
+        cy.xpath(this.usernameInput).type(username);
         return this;
     }
 
     fillEmail(email) {
-        cy.get(this.emailInput).type(email);
+        cy.xpath(this.emailInput).type(email);
         return this;
     }
 
@@ -39,4 +39,3 @@ export class LostPasswordPage {
         return new LoginPage();
     }
 }
-

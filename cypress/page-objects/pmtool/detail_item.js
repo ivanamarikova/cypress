@@ -1,7 +1,7 @@
 export class DetailItem {
     constructor() {
         this.productName = ".bgnone";
-        this.productDescription = "#myTab > .active > a";
+        this.productDescription = "#description > p";
         this.productPrice = ".productfilneprice";
         this.productModel = ".productinfo";
     }
@@ -11,9 +11,7 @@ export class DetailItem {
     }
 
     getProductDescription() {
-        return cy.get(this.productDescription).invoke("text").then((description) => {
-            return description.trim();
-        });
+        return cy.get(this.productDescription).invoke("text");
     }
 
     getProductPrice() {
