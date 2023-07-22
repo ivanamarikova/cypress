@@ -1,3 +1,4 @@
+//
 import { LoginPage } from "./login_page";
 
 export class LostPasswordPage extends LoginPage {
