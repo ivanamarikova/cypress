@@ -1,10 +1,7 @@
-import { HeaderEshop } from "./header_eshop";
+import { eshopBasePage } from "./eshop_base_page";
 
-
-export class TredgateEshop extends HeaderEshop {
-    constructor() {
-        super();
-        this.HeaderEshop = "#top-links";
-        cy.get(this.HeaderEshop).should("be.visible");
+export class TredgateEshop extends eshopBasePage {
+    constructor(path) {
+        super("route=product/product&product_id=40");
     }
 }

@@ -2,40 +2,52 @@ import { HeaderEshop } from "./header_eshop";
 
 export class ProductPage extends HeaderEshop {
     constructor() {
-        this.tredgateshop = "http://tredgate.com/eshop/";
-        this.openIphone = "http://tredgate.com/eshop/index.php?route=product/product&product_id=40";
+        super();
+        this.checkProductName = "h1";
+        this.checkBrand = "#content";
+        this.checkBrandType = "a[href='http://tredgate.com/eshop/index.php?route=product/manufacturer/info&manufacturer_id=8']"
         this.checkDefaultQuantitySelector = 'input#input-quantity';
         this.checkPriceSelector = 'h2';
-        this.checkAddToCartButtonExistsSelector = 'button#button-cart';
+        this.checkAddToCartButton = 'button#button-cart';
     }
 
-    viewport() {
-        cy.viewport(390, 844);
+    checkProductNameExist() {
+        cy.get(this.checkProductName).should("exist");
         return this;
     }
 
-    openTredgate() {
-        cy.visit(this.tredgateshop);
+    checkProductNameHaveText() {
+        cy.get(this.checkProductName).should("have.text", "iPhone");
         return this;
     }
 
-    OpenIphone() {
-        cy.visit(this.openIphone);
+    checkBrandIsVisible() {
+        cy.get(this.checkBrand).should("be.visible");
         return this;
     }
 
-    checkDefaultQuantity() {
+    checkBrandTypeHasText() {
+        cy.get(this.checkBrandType).should("have.text", "Apple");
+        return this;
+    }
+
+    checkPriceIsVisible() {
+        cy.get(this.checkPriceSelector).should("be.visible");
+        return this;
+    }
+
+    checkPriceContainText() {
+        cy.get(this.checkPriceSelector).should("contain.text", "101.00€");
+    }
+
+    checkDefaultQuantityHasValue() {
         cy.get(this.checkDefaultQuantitySelector).should("have.value", "1");
         return this;
     }
 
-    checkPrice() {
-        cy.get(this.checkPriceSelector).should("contain.text", "101.00€");
-        return this;
-    }
 
     checkAddToCartButtonExists() {
-        cy.get(this.checkAddToCartButtonExistsSelector).should("be.visible");
+        cy.get(this.checkAddToCartButton).should("exist");
         return this;
     }
 }
