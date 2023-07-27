@@ -1,5 +1,5 @@
 import { LoginPage } from "./login_page";
-import { MenuSection } from "./menu_section";
+import { MenuSection } from '../../page-objects/pmtool/menu_section';
 
 export class HeaderSection extends MenuSection {
     constructor(path) {

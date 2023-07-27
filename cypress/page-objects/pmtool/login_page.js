@@ -5,17 +5,20 @@ export class LoginPage {
         this.pmtoolUrl = "http://tredgate.com/pmtool/";
         this.usernameInput = "#username";
         this.passwordInput = "#password";
+        this.typeNewUsername = "#username";
+        this.typeNewPassword = "#password";
         this.loginButton = ".btn";
         this.pageHeader = "h3.form-title";
         this.alertDiv = ".alert-danger";
         this.logoImg = "img";
-        this.projectsAnchor = "#Projects>a";
+        //! neni mozne delat should, protoze pri vytvoreni LoginPage nemame otevrenou stranku
+
     }
 
     passwordIsVisible() {
         cy.get(this.passwordInput).should("be.visible");
         return this;
-    }
+    };
 
     passwordHasPlaceholder(placeholder) {
         cy.get(this.passwordInput).should("have.attr", "placeholder", placeholder);
@@ -37,10 +40,12 @@ export class LoginPage {
         return this;
     }
 
+
     usernameHasValue(username) {
-        cy.get(this.usernameInput).should("have.value", username);
+        cy.get(this.usernameInput).type(username).should("have.value", username);
         return this;
     }
+
 
     openPmtool() {
         cy.visit(this.pmtoolUrl);
@@ -56,32 +61,24 @@ export class LoginPage {
         cy.get(this.alertDiv).should("not.exist");
         return this;
     }
-
-    typeUsername(username) {
+    typeAdminUserName() {
         cy.get(this.usernameInput).type("fifka_petr");
         return this;
     }
 
-    typePassword(password) {
+    typeAdminPassword() {
         cy.get(this.passwordInput).type("Tredgate2023");
         return this;
     }
 
-    clickLoginButton() {
+    clickLogin() {
         cy.get(this.loginButton).click();
-        return this;
+        return new HomePage();
     }
-    clickProjects() {
-        const { ProjectsPage } = require("./projects_page");
-        cy.get(this.projectsAnchor).click();
-        return new ProjectsPage();
-    }
-
-    login(username, password) {
-        this.typeUsername(username);
-        this.typePassword(password);
-        this.clickLoginButton();
+    loginWithNewUserCredentials(username, password) {
+        cy.get(this.typeNewUsername).type(username);
+        cy.get(this.typeNewPassword).type(password);
+        this.clickLogin();
         return new HomePage();
     }
 }
-

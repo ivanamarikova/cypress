@@ -17,7 +17,7 @@ describe('Login and Logout Tests', () => {
         pmtoolLoginPage.openPmTool();
         pmtoolLoginPage.typeUsername("fifka_petr");
         pmtoolLoginPage.typePassword("Tredgate2023");
-        pmtoolLoginPage.clickLoginclickLogin();
+        pmtoolLoginPage.clickLogin();
         homepage.clickProfile();
         homepage.clickLogout();
 
