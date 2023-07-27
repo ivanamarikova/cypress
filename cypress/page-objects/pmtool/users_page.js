@@ -2,7 +2,7 @@ import { HeaderSection } from "./header_sections";
 
 export class UsersPage extends HeaderSection {
     constructor() {
-        super();
+        super("module=items/items&path=1");
         this.pageTitle = ".page-title";
         this.actionHeader = "th[test_id='Action']"
         cy.get(this.pageTitle).should('contain.text', "Users");
