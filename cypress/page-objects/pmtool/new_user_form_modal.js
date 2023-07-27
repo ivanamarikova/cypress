@@ -41,7 +41,7 @@ export class NewUserFormModal {
     }
 
     typePassword(password) {
-        cy.get(this.userPasswordTest).type(password); // Use the password parameter passed to the method
+        cy.get(this.userPasswordTest).type(password);
         return this;
     }
 
@@ -67,7 +67,7 @@ export class NewUserFormModal {
 
     clickSaveButtonUser() {
         cy.get(this.saveButtonUser).click();
-        return new UsersPage(); // Fixed return statement
+        return new UsersPage();
     }
 }
 
